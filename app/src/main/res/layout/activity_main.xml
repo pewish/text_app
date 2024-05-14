@@ -107,6 +107,7 @@
                 android:hint="@string/result"
                 android:textSize="16sp"
                 android:textColor="@color/black"
+
                 />
 
             <ImageButton
