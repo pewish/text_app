@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">text_app</string>
+    <string name="auth">Авторизация</string>
+    <string name="email">Электронная почта</string>
+    <string name="pass">Пароль</string>
+    <string name="reg">Регистрация</string>
+    <string name="join">Войти</string>
+    <string name="back">Назад</string>
+    <string name="install">Установить</string>
+    <string name="settings">Настройки</string>
+    <string name="change_pass">Поменять пароль</string>
+    <string name="enter_old_pass">Введите старый пароль</string>
+    <string name="enter_new_pass">Введите новый пароль</string>
+    <string name="conf_pass">Подтвердите пароль</string>
+    <string name="load">Загрузить изображение</string>
+    <string name="result">Результат</string>
+    <string name="recognize">Распознать</string>
+</resources>

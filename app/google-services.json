@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "263967527803",
+    "project_id": "textrecognizems",
+    "storage_bucket": "textrecognizems.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263967527803:android:4447f056e53fffa9f2e3de",
+        "android_client_info": {
+          "package_name": "com.example.text_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJgomW4e24SjN2fiYoDg2STYthmd7Qxgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
