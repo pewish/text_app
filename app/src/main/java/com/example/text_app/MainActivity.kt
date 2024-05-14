@@ -1,12 +1,18 @@
 package com.example.text_app
 
+import android.content.ClipData
+import android.content.ClipData.*
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -20,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonBack: Button
     private lateinit var buttonSettings: Button
     private lateinit var bitmap: Bitmap
+    private lateinit var buttonCopy: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +36,9 @@ class MainActivity : AppCompatActivity() {
         buttonSettings = findViewById(R.id.buttonSettings)
         buttonLoad = findViewById(R.id.buttonLoad)
         buttonResult = findViewById(R.id.buttonResult)
-        textResult = findViewById(R.id.result)
+        textResult = findViewById(R.id.textResult)
         imageView = findViewById(R.id.pic)
+        buttonCopy = findViewById(R.id.copyButton)
 
         buttonBack.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
@@ -54,6 +62,14 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+
+       buttonCopy.setOnClickListener {
+           var clipBoard: ClipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+           val resultText = textResult.text.toString()
+           val clip = ClipData.newPlainText("Скопировано", resultText)
+           clipBoard.setPrimaryClip(clip)
+           Toast.makeText(this, "Скопировано", Toast.LENGTH_SHORT).show()
+       }
 
     }
 

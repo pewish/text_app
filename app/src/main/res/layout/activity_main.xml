@@ -97,17 +97,26 @@
                 android:textSize="16sp"
                 app:strokeColor="@color/magenta"
                 app:strokeWidth="4dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/result"
-                android:text="@string/result"
-                android:fontFamily="@font/montserrat_regular"
-                android:textColor="@color/black"
+            <EditText
+                android:id="@+id/textResult"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:hint="@string/result"
                 android:textSize="16sp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:textColor="@color/black"
+                />
+
+            <ImageButton
+                android:id="@+id/copyButton"
+                android:background="#55FFFFFF"
+                android:layout_width="50sp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20sp"
+                android:src="@drawable/copy"
 
                 />
 
