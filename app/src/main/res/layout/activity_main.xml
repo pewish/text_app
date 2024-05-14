@@ -22,6 +22,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+        <LinearLayout
+            android:id="@+id/buttonHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <Button
                 android:id="@+id/buttonBack"
                 android:layout_width="wrap_content"
@@ -57,6 +63,8 @@
                 app:strokeColor="@color/magenta"
                 app:strokeWidth="4dp" />
 
+        </LinearLayout>
+
             <ImageView
                 android:id="@+id/pic"
                 android:layout_width="match_parent"
@@ -65,12 +73,20 @@
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/picture" />
 
+        <LinearLayout
+            android:id="@+id/buttonLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="140sp"
+            android:orientation="horizontal">
+
             <Button
                 android:id="@+id/buttonLoad"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="61sp"
+                android:layout_marginStart="10sp"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="5sp"
                 android:background="@color/white"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/montserrat_medium"
@@ -79,7 +95,28 @@
                 android:textColor="@color/magenta"
                 android:textSize="16sp"
                 app:strokeColor="@color/magenta"
+                android:layout_weight="1"
                 app:strokeWidth="4dp" />
+
+            <Button
+                android:id="@+id/buttonmMake"
+                android:layout_width="wrap_content"
+                android:layout_height="61sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10sp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@string/make"
+                android:textColor="@color/magenta"
+                android:textSize="16sp"
+                app:strokeColor="@color/magenta"
+                android:layout_weight="2"
+                app:strokeWidth="4dp" />
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/buttonResult"
@@ -97,6 +134,18 @@
                 android:textSize="16sp"
                 app:strokeColor="@color/magenta"
                 app:strokeWidth="4dp" />
+
+            <ImageButton
+                android:id="@+id/copyButton"
+                android:background="#55FFFFFF"
+                android:layout_width="50sp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20sp"
+                android:src="@drawable/copy"
+
+                />
+
             <EditText
                 android:id="@+id/textResult"
                 android:layout_width="match_parent"
@@ -107,17 +156,6 @@
                 android:hint="@string/result"
                 android:textSize="16sp"
                 android:textColor="@color/black"
-
-                />
-
-            <ImageButton
-                android:id="@+id/copyButton"
-                android:background="#55FFFFFF"
-                android:layout_width="50sp"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
-                android:layout_marginEnd="20sp"
-                android:src="@drawable/copy"
 
                 />
 

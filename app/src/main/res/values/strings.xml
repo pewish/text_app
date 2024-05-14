@@ -15,4 +15,5 @@
     <string name="load">Загрузить изображение</string>
     <string name="result">Результат</string>
     <string name="recognize">Распознать</string>
+    <string name="make">Сделать изображение</string>
 </resources>
