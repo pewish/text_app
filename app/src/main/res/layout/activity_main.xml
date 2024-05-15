@@ -22,46 +22,41 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
         <LinearLayout
             android:id="@+id/buttonHead"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/buttonBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="30dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/white"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/montserrat_regular"
-                android:gravity="center"
-                android:text="@string/back"
-                android:textColor="#AB47BC"
-                android:textSize="16sp"
-                app:strokeColor="@color/magenta"
-                app:strokeWidth="4dp" />
+            <ImageView
+                android:id="@+id/imageBackgroundMain"
+                android:layout_width="200dp"
+                android:layout_height="135dp"
+                android:layout_gravity="start"
+                android:visibility="visible"
+                app:srcCompat="@drawable/sunset"
+                />
 
-            <Button
+            <ImageButton
+                android:id="@+id/buttonBack"
+                android:background="#55FFFFFF"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
+                android:layout_marginStart="20sp"
+                android:layout_marginEnd="20sp"
+                android:src="@drawable/exit" />
+
+            <ImageButton
                 android:id="@+id/buttonSettings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/white"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/montserrat_regular"
-                android:gravity="center"
-                android:text="@string/settings"
-                android:textColor="#AB47BC"
-                android:textSize="16sp"
-                app:strokeColor="@color/magenta"
-                app:strokeWidth="4dp" />
+                android:background="#55FFFFFF"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
+                android:layout_marginStart="10sp"
+                android:src="@drawable/settings" />
 
         </LinearLayout>
 

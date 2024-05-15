@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonResult : Button
     private lateinit var textResult: TextView
     private lateinit var imageView: ImageView
-    private lateinit var buttonBack: Button
-    private lateinit var buttonSettings: Button
+    private lateinit var buttonBack: ImageButton
+    private lateinit var buttonSettings: ImageButton
     private lateinit var bitmap: Bitmap
     private lateinit var buttonCopy: ImageButton
 
