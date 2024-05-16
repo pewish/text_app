@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">text_app</string>
+    <string name="app_name">textApp</string>
     <string name="auth">Авторизация</string>
     <string name="email">Электронная почта</string>
     <string name="pass">Пароль</string>

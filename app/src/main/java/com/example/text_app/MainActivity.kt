@@ -34,15 +34,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonSettings: ImageButton
     private lateinit var buttonCopy: ImageButton
 
-    private val binging: ActivityMainBinding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
-    }
-    //private val CAMERA_REQUEST_CODE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //binging = ActivityMainBinding.inflate(LayoutInflater)
-        setContentView(binging.root)
+        setContentView(R.layout.activity_main)
 
         buttonBack = findViewById(R.id.buttonBack)
         buttonSettings = findViewById(R.id.buttonSettings)
@@ -71,9 +67,9 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, 200)
         }
 
+
         buttonMake.setOnClickListener (View.OnClickListener {
-            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivityForResult(intent, 200)
+
         })
 
 
