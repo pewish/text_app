@@ -10,6 +10,7 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -70,12 +71,10 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, 200)
         }
 
-        buttonMake.setOnClickListener {
-            val intent = Intent()
-            intent.setAction(Intent.ACTION_CAMERA_BUTTON)
-            intent.setType("image/*")
+        buttonMake.setOnClickListener (View.OnClickListener {
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             startActivityForResult(intent, 200)
-        }
+        })
 
 
         buttonResult.setOnClickListener {

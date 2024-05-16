@@ -62,10 +62,9 @@
 
             <ImageView
                 android:id="@+id/pic"
-                android:layout_width="match_parent"
-                android:layout_height="100sp"
-                android:layout_gravity="end"
-                android:scaleType="fitCenter"
+                android:layout_width="300dp"
+                android:layout_height="350dp"
+                android:layout_gravity="center"
                 app:srcCompat="@drawable/picture" />
 
         <LinearLayout
