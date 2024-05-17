@@ -16,4 +16,5 @@
     <string name="result">Результат</string>
     <string name="recognize">Распознать</string>
     <string name="make">Сделать изображение</string>
+    <string name="photoSaved">Фото сохранено</string>
 </resources>

@@ -7,8 +7,12 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.net.Uri
+import android.nfc.Tag
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -16,34 +20,53 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContract
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.CameraProvider
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCaptureException
+import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Constraints
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.example.mulriplepermissionhandleapp.com.example.text_app.Constants
 import com.example.text_app.databinding.ActivityMainBinding
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bitmap: Bitmap
+    private lateinit var binding: ActivityMainBinding
 
     private lateinit var buttonLoad: Button
-    private lateinit var buttonMake: Button
+    private lateinit var buttonCapture: Button
     private lateinit var buttonResult : Button
     private lateinit var textResult: TextView
     private lateinit var imageView: ImageView
     private lateinit var buttonBack: ImageButton
     private lateinit var buttonSettings: ImageButton
     private lateinit var buttonCopy: ImageButton
+    private var imageCapture: ImageCapture? = null
+    private lateinit var outputDirectory: File
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //binging = ActivityMainBinding.inflate(LayoutInflater)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        outputDirectory = getOutputDirectory()
 
         buttonBack = findViewById(R.id.buttonBack)
         buttonSettings = findViewById(R.id.buttonSettings)
         buttonLoad = findViewById(R.id.buttonLoad)
-        buttonMake = findViewById(R.id.buttonMake)
+        buttonCapture = findViewById(R.id.buttonCapture)
         buttonResult = findViewById(R.id.buttonResult)
         textResult = findViewById(R.id.textResult)
         imageView = findViewById(R.id.pic)
@@ -67,10 +90,13 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, 200)
         }
 
+        buttonCapture.setOnClickListener {
+            startCamera()
+        }
 
-        buttonMake.setOnClickListener (View.OnClickListener {
-
-        })
+        binding.buttonCatch.setOnClickListener{
+            takePhoto()
+        }
 
 
         buttonResult.setOnClickListener {
@@ -122,5 +148,51 @@ class MainActivity : AppCompatActivity() {
             bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
             imageView.setImageBitmap(bitmap)
         }
+    }
+
+    private fun getOutputDirectory(): File {
+        val mediaDir = externalMediaDirs.firstOrNull()?.let { mFile ->
+            File(mFile, resources.getString(R.string.app_name)).apply {
+                mkdirs()
+            }
+        }
+        return if (mediaDir != null && mediaDir.exists())
+            mediaDir else filesDir
+    }
+    private fun startCamera() {
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+        cameraProviderFuture.addListener({
+            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+            val preview = androidx.camera.core.Preview.Builder().build().also { mPreview ->
+                mPreview.setSurfaceProvider(binding.viewFinder.surfaceProvider)
+            }
+            imageCapture = ImageCapture.Builder().build()
+            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+            try {
+                cameraProvider.unbindAll()
+                cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture)
+            } catch (e: Exception) {
+                Log.d(Constants.TAG, "startCamera fail:", e)
+            }
+        }, ContextCompat.getMainExecutor(this))
+    }
+
+    private fun takePhoto() {
+        val imageCapture = imageCapture?:return
+        val photoFile = File (outputDirectory, SimpleDateFormat(Constants.FILE_NAME_FORMAT, Locale.getDefault()).format(System.currentTimeMillis()) + ".jpg")
+        val outputOption = ImageCapture.OutputFileOptions.Builder(photoFile).build()
+        imageCapture.takePicture(outputOption, ContextCompat.getMainExecutor(this),
+            object : ImageCapture.OnImageSavedCallback {
+            override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                val savedUri = Uri.fromFile(photoFile)
+                val msg = getString(R.string.photoSaved)
+                Toast.makeText(this@MainActivity, "$msg $savedUri", Toast.LENGTH_LONG).show()
+
+            }
+
+            override fun onError(exception: ImageCaptureException) {
+                Log.e(Constants.TAG, "onError: ${exception.message}", exception)
+            }
+        })
     }
 }

@@ -8,6 +8,43 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/viewFinder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="-193dp"
+            tools:layout_editor_absoluteY="28dp">
+
+        </androidx.camera.view.PreviewView>
+
+        <ImageButton
+            android:id="@+id/buttonBackMain"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="#55000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/arrow" />
+
+        <ImageButton
+            android:id="@+id/buttonCatch"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="32dp"
+            android:src="@drawable/camera"
+            android:background="#55000000"
+            app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -93,7 +130,7 @@
                 app:strokeWidth="4dp" />
 
             <Button
-                android:id="@+id/buttonMake"
+                android:id="@+id/buttonCapture"
                 android:layout_width="wrap_content"
                 android:layout_height="61sp"
                 android:layout_gravity="center"
@@ -131,7 +168,7 @@
 
             <ImageButton
                 android:id="@+id/copyButton"
-                android:background="#55FFFFFF"
+                android:background="#55000000"
                 android:layout_width="50sp"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
